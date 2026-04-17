@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://cu4c5qkpyvx5v"]
+
+[ext_resource type="Texture2D" uid="uid://bsy0a234p2roe" path="res://assets/tlo.png" id="1_l6cm7"]
+[ext_resource type="Script" uid="uid://dqxpi0ka1cdn3" path="res://scripts/gameplay/menu/Button.cs" id="2_ekxnf"]
+
+[node name="MainMenu" type="Node2D" unique_id=1332149333]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1753301951]
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=318309532]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control" unique_id=1538481392]
+layout_mode = 1
+offset_right = 1920.0
+offset_bottom = 1080.0
+scale = Vector2(0.6, 0.6)
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer" unique_id=683943625]
+layout_mode = 2
+texture = ExtResource("1_l6cm7")
+
+[node name="Button" type="Button" parent="CanvasLayer/Control/HBoxContainer/TextureRect" unique_id=1290414747]
+custom_minimum_size = Vector2(400, 225)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -112.5
+offset_right = 200.0
+offset_bottom = 112.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 100
+text = "Play"
+script = ExtResource("2_ekxnf")

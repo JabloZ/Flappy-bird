@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://bt6cfq172borv"]
+
+[ext_resource type="Texture2D" uid="uid://bsy0a234p2roe" path="res://assets/tlo.png" id="1_uwrxv"]
+[ext_resource type="PackedScene" uid="uid://cny32v45bgsp7" path="res://scenes/character.tscn" id="2_yqjtg"]
+[ext_resource type="Texture2D" uid="uid://bkwt1bxoop7im" path="res://assets/dol.png" id="3_lnu2h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lbhrr"]
+size = Vector2(1152, 39)
+
+[node name="Game" type="Node2D" unique_id=222376207]
+
+[node name="Control" type="Control" parent="." unique_id=977079667]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="TextureRect" type="TextureRect" parent="Control" unique_id=2146355013]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("1_uwrxv")
+
+[node name="Character" parent="Control" unique_id=999061394 instance=ExtResource("2_yqjtg")]
+position = Vector2(120, 300)
+
+[node name="StaticBody2D" type="Area2D" parent="Control" unique_id=574462039]
+position = Vector2(0, 648)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Control/StaticBody2D" unique_id=1832281457]
+position = Vector2(576, -19.5)
+shape = SubResource("RectangleShape2D_lbhrr")
+
+[node name="TextureRect" type="TextureRect" parent="Control/StaticBody2D" unique_id=1068413020]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 1152.0
+grow_vertical = 0
+texture = ExtResource("3_lnu2h")

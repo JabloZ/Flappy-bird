@@ -2,7 +2,10 @@
 
 [ext_resource type="Texture2D" uid="uid://bsy0a234p2roe" path="res://assets/tlo.png" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://cny32v45bgsp7" path="res://scenes/character.tscn" id="2_yqjtg"]
+[ext_resource type="Script" uid="uid://g308rm08l37w" path="res://scripts/gameplay/FloorCollision.cs" id="3_lbhrr"]
 [ext_resource type="Texture2D" uid="uid://bkwt1bxoop7im" path="res://assets/dol.png" id="3_lnu2h"]
+[ext_resource type="Script" uid="uid://dufuiwxyysr75" path="res://scripts/gameplay/PipeSpawner.cs" id="5_p57ef"]
+[ext_resource type="PackedScene" uid="uid://cpu88kec1ggg4" path="res://scenes/pipe.tscn" id="6_u5sy4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lbhrr"]
 size = Vector2(1152, 39)
@@ -11,32 +14,71 @@ size = Vector2(1152, 39)
 
 [node name="Control" type="Control" parent="." unique_id=977079667]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 1152.0
-offset_bottom = 648.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="Control" unique_id=2146355013]
-layout_mode = 0
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=728947037]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=2146355013]
 offset_right = 1920.0
 offset_bottom = 1080.0
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("1_uwrxv")
 
-[node name="Character" parent="Control" unique_id=999061394 instance=ExtResource("2_yqjtg")]
-position = Vector2(120, 300)
-
-[node name="StaticBody2D" type="Area2D" parent="Control" unique_id=574462039]
+[node name="Area2D" type="Area2D" parent="CanvasLayer" unique_id=574462039]
 position = Vector2(0, 648)
+script = ExtResource("3_lbhrr")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Control/StaticBody2D" unique_id=1832281457]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/Area2D" unique_id=1832281457]
 position = Vector2(576, -19.5)
 shape = SubResource("RectangleShape2D_lbhrr")
 
-[node name="TextureRect" type="TextureRect" parent="Control/StaticBody2D" unique_id=1068413020]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Area2D" unique_id=1068413020]
+z_index = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -40.0
+offset_top = -39.0
 offset_right = 1152.0
+offset_bottom = 1.0
 grow_vertical = 0
 texture = ExtResource("3_lnu2h")
+
+[node name="Character" parent="CanvasLayer" unique_id=999061394 instance=ExtResource("2_yqjtg")]
+z_index = 2
+position = Vector2(120.00001, 300)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer" unique_id=1172320197]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -157.5
+offset_top = -89.0
+offset_right = 157.5
+offset_bottom = 89.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer" unique_id=522815194]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Game over"
+
+[node name="Button" type="Button" parent="CanvasLayer/VBoxContainer" unique_id=29323889]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Restart"
+
+[node name="PipeContainer" type="Node2D" parent="CanvasLayer" unique_id=372274081 node_paths=PackedStringArray("PipeContainer", "SpawnTimer")]
+script = ExtResource("5_p57ef")
+Pipe = ExtResource("6_u5sy4")
+PipeContainer = NodePath(".")
+SpawnTimer = NodePath("SpawnTimer")
+
+[node name="SpawnTimer" type="Timer" parent="CanvasLayer/PipeContainer" unique_id=2102382398]

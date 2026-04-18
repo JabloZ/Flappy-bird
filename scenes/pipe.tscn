@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://cpu88kec1ggg4"]
+
+[ext_resource type="Texture2D" uid="uid://diw52qw5m6vbq" path="res://assets/pillar.png" id="1_8x3ej"]
+[ext_resource type="Script" uid="uid://cml13faymgdaw" path="res://scripts/gameplay/PipeCollision.cs" id="1_arpqm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_arpqm"]
+size = Vector2(40, 500)
+
+[node name="Pipe" type="Node2D" unique_id=1441872821]
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1115394582]
+scale = Vector2(2, 2)
+script = ExtResource("1_arpqm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1493034580]
+position = Vector2(20, 250)
+shape = SubResource("RectangleShape2D_arpqm")
+
+[node name="TextureRect" type="TextureRect" parent="Area2D" unique_id=1154929460]
+texture_filter = 1
+offset_right = 40.0
+offset_bottom = 500.0
+texture = ExtResource("1_8x3ej")

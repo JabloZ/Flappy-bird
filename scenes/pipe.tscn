@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://cml13faymgdaw" path="res://scripts/gameplay/PipeCollision.cs" id="1_arpqm"]
 [ext_resource type="Script" uid="uid://dgge6k7tc4am6" path="res://scripts/gameplay/PipeManager.cs" id="1_ejsh2"]
 [ext_resource type="Script" uid="uid://djge4w7posedw" path="res://scripts/gameplay/ScoreCollision.cs" id="3_8p0di"]
+[ext_resource type="AudioStream" uid="uid://bai4m6q34rcaa" path="res://assets/sounds/hitHurt.wav" id="4_4ybk5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_arpqm"]
 size = Vector2(40, 500)
@@ -11,12 +12,14 @@ size = Vector2(40, 500)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ejsh2"]
 size = Vector2(22, 314)
 
-[node name="Pipe" type="Node2D" unique_id=1441872821]
+[node name="Pipe" type="Node2D" unique_id=1441872821 node_paths=PackedStringArray("ScoreCollision")]
 script = ExtResource("1_ejsh2")
+ScoreCollision = NodePath("ScoreArea")
 
-[node name="PipeArea" type="Area2D" parent="." unique_id=1115394582]
+[node name="PipeArea" type="Area2D" parent="." unique_id=1115394582 node_paths=PackedStringArray("HitSound")]
 scale = Vector2(2, 2)
 script = ExtResource("1_arpqm")
+HitSound = NodePath("HitSound")
 
 [node name="PipeCollision" type="CollisionShape2D" parent="PipeArea" unique_id=1493034580]
 position = Vector2(20, 250)
@@ -28,8 +31,13 @@ offset_right = 40.0
 offset_bottom = 500.0
 texture = ExtResource("1_8x3ej")
 
-[node name="ScoreArea" type="Area2D" parent="." unique_id=900504969]
+[node name="HitSound" type="AudioStreamPlayer2D" parent="PipeArea" unique_id=1431236283]
+process_mode = 3
+stream = ExtResource("4_4ybk5")
+
+[node name="ScoreArea" type="Area2D" parent="." unique_id=900504969 node_paths=PackedStringArray("HitSound")]
 script = ExtResource("3_8p0di")
+HitSound = NodePath("../PipeArea/HitSound")
 
 [node name="ScoreCollision" type="CollisionShape2D" parent="ScoreArea" unique_id=1856496396]
 position = Vector2(42, -157)

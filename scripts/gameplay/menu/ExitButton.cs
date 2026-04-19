@@ -1,18 +1,16 @@
 using Godot;
 using System;
 
-public partial class LabelScore : Label
+public partial class ExitButton : Button
 {
-
 	// Called when the node enters the scene tree for the first time.
-	private int score;
 	public override void _Ready()
     {
-        score=0;
+        Pressed += OnQuitButtonPressed;
     }
-	public void AddPoints()
+
+	private void OnQuitButtonPressed()
     {
-        score+=1;
-		Text=$"{score}";
+        GetTree().Quit();
     }
 }

@@ -2,13 +2,16 @@
 
 [ext_resource type="Texture2D" uid="uid://t7d8ewhjw8nr" path="res://assets/duck.png" id="1_agfs1"]
 [ext_resource type="Script" uid="uid://b6dcek7n0ad3y" path="res://scripts/gameplay/Character.cs" id="1_rkhd4"]
+[ext_resource type="AudioStream" uid="uid://c40v7hj58dtjb" path="res://assets/sounds/synth.wav" id="3_lrhn5"]
 
 [node name="Character" type="Node2D" unique_id=999061394]
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1593385870]
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1593385870 node_paths=PackedStringArray("JumpSound")]
 position = Vector2(32, 32)
 scale = Vector2(4, 4)
 script = ExtResource("1_rkhd4")
+JumpSound = NodePath("JumpSound")
+RotationSpeed = 0.5
 
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D" unique_id=916323722]
 texture_filter = 1
@@ -17,3 +20,7 @@ texture = ExtResource("1_agfs1")
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="CharacterBody2D" unique_id=1263652050]
 position = Vector2(0.5, 0.5)
 polygon = PackedVector2Array(1, 2.75, 7, -3, 2, -7.25, -6, -7.25, -7.25, 3.75, -4, 7)
+
+[node name="JumpSound" type="AudioStreamPlayer2D" parent="CharacterBody2D" unique_id=550419331]
+stream = ExtResource("3_lrhn5")
+volume_db = -3.215

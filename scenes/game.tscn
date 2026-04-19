@@ -5,17 +5,21 @@
 [ext_resource type="PackedScene" uid="uid://cny32v45bgsp7" path="res://scenes/character.tscn" id="2_yqjtg"]
 [ext_resource type="Script" uid="uid://g308rm08l37w" path="res://scripts/gameplay/FloorCollision.cs" id="3_lbhrr"]
 [ext_resource type="Texture2D" uid="uid://bkwt1bxoop7im" path="res://assets/dol.png" id="3_lnu2h"]
+[ext_resource type="AudioStream" uid="uid://bai4m6q34rcaa" path="res://assets/sounds/hitHurt.wav" id="5_dinhu"]
 [ext_resource type="Script" uid="uid://dufuiwxyysr75" path="res://scripts/gameplay/PipeSpawner.cs" id="5_p57ef"]
 [ext_resource type="Script" uid="uid://b7k48ogjak2av" path="res://scripts/gameplay/core/RestartContainer.cs" id="6_kvpfn"]
 [ext_resource type="PackedScene" uid="uid://cpu88kec1ggg4" path="res://scenes/pipe.tscn" id="6_u5sy4"]
-[ext_resource type="Script" uid="uid://dqbhgmvkagjy8" path="res://scripts/gameplay/LabelScore.cs" id="7_u5sy4"]
+[ext_resource type="Script" uid="uid://8kovxhp4nr2w" path="res://scripts/gameplay/ScoreManager.cs" id="9_0tnpc"]
+[ext_resource type="AudioStream" uid="uid://b1gg0k5koxv38" path="res://assets/sounds/level.wav" id="10_kvpfn"]
+[ext_resource type="AudioStream" uid="uid://bx410s1t6dwev" path="res://assets/sounds/level10.wav" id="11_dinhu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lbhrr"]
 size = Vector2(1152, 39)
 
-[node name="Game" type="Node2D" unique_id=222376207 node_paths=PackedStringArray("FloorCollision", "RestartContainer")]
+[node name="Game" type="Node2D" unique_id=222376207 node_paths=PackedStringArray("FloorCollision", "RoofCollision", "RestartContainer")]
 script = ExtResource("1_vtaks")
 FloorCollision = NodePath("Control/CanvasLayer/Floor")
+RoofCollision = NodePath("Control/CanvasLayer/Roof")
 RestartContainer = NodePath("Control/CanvasLayer/RestartContainer")
 
 [node name="Control" type="Control" parent="." unique_id=202401166]
@@ -30,9 +34,10 @@ offset_bottom = 1080.0
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("1_uwrxv")
 
-[node name="Floor" type="Area2D" parent="Control/CanvasLayer" unique_id=574462039]
+[node name="Floor" type="Area2D" parent="Control/CanvasLayer" unique_id=574462039 node_paths=PackedStringArray("HitSound")]
 position = Vector2(0, 648)
 script = ExtResource("3_lbhrr")
+HitSound = NodePath("HitSound")
 
 [node name="FloorCollision" type="CollisionShape2D" parent="Control/CanvasLayer/Floor" unique_id=1832281457]
 position = Vector2(576, -19.5)
@@ -48,6 +53,23 @@ offset_right = 1152.0
 offset_bottom = 1.0
 grow_vertical = 0
 texture = ExtResource("3_lnu2h")
+
+[node name="HitSound" type="AudioStreamPlayer2D" parent="Control/CanvasLayer/Floor" unique_id=344934248]
+process_mode = 3
+stream = ExtResource("5_dinhu")
+
+[node name="Roof" type="Area2D" parent="Control/CanvasLayer" unique_id=1348631733 node_paths=PackedStringArray("HitSound")]
+position = Vector2(0, 648)
+script = ExtResource("3_lbhrr")
+HitSound = NodePath("HitSound")
+
+[node name="FloorCollision" type="CollisionShape2D" parent="Control/CanvasLayer/Roof" unique_id=2088170428]
+position = Vector2(576, -668)
+shape = SubResource("RectangleShape2D_lbhrr")
+
+[node name="HitSound" type="AudioStreamPlayer2D" parent="Control/CanvasLayer/Roof" unique_id=1459724908]
+process_mode = 3
+stream = ExtResource("5_dinhu")
 
 [node name="Character" parent="Control/CanvasLayer" unique_id=999061394 instance=ExtResource("2_yqjtg")]
 z_index = 2
@@ -86,25 +108,40 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 60
 text = "Quit"
 
-[node name="PipeContainer" type="Node2D" parent="Control/CanvasLayer" unique_id=372274081 node_paths=PackedStringArray("PipeContainer", "SpawnTimer", "Label", "RestartContainer")]
+[node name="PipeContainer" type="Node2D" parent="Control/CanvasLayer" unique_id=372274081 node_paths=PackedStringArray("PipeContainer", "SpawnTimer", "RestartContainer", "ScoreManager")]
 script = ExtResource("5_p57ef")
 Character = ExtResource("2_yqjtg")
 Pipe = ExtResource("6_u5sy4")
 PipeContainer = NodePath(".")
 SpawnTimer = NodePath("SpawnTimer")
-Label = NodePath("../Label")
 RestartContainer = NodePath("../RestartContainer")
+ScoreManager = NodePath("../ScoreManager")
 
 [node name="SpawnTimer" type="Timer" parent="Control/CanvasLayer/PipeContainer" unique_id=2102382398]
 
-[node name="Label" type="Label" parent="Control/CanvasLayer" unique_id=655803578]
+[node name="ScoreManager" type="Node2D" parent="Control/CanvasLayer" unique_id=115511096 node_paths=PackedStringArray("AdvanceSound", "Advance10Sound", "Label")]
+script = ExtResource("9_0tnpc")
+AdvanceSound = NodePath("AdvanceSound")
+Advance10Sound = NodePath("Advance10Sound")
+Label = NodePath("CanvasLayer/Label")
+
+[node name="AdvanceSound" type="AudioStreamPlayer2D" parent="Control/CanvasLayer/ScoreManager" unique_id=1354682311]
+stream = ExtResource("10_kvpfn")
+
+[node name="Advance10Sound" type="AudioStreamPlayer2D" parent="Control/CanvasLayer/ScoreManager" unique_id=1423094300]
+stream = ExtResource("11_dinhu")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Control/CanvasLayer/ScoreManager" unique_id=447358463]
+
+[node name="Label" type="Label" parent="Control/CanvasLayer/ScoreManager/CanvasLayer" unique_id=1191943210]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -20.0
-offset_right = 20.0
-offset_bottom = 69.0
+offset_left = -17.0
+offset_top = 14.0
+offset_right = 17.0
+offset_bottom = 97.0
 grow_horizontal = 2
-theme_override_font_sizes/font_size = 50
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 60
 text = "0"
-script = ExtResource("7_u5sy4")

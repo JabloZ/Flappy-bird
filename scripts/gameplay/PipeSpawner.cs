@@ -8,8 +8,8 @@ public partial class PipeSpawner : Node2D
 	[Export] public float SpawnRate=1.5f;
 	[Export] public Node2D PipeContainer;
 	[Export] public Timer SpawnTimer;
-	[Export] public LabelScore Label;
 	[Export] public RestartContainer RestartContainer;
+	[Export] public ScoreManager ScoreManager;
 	
 	public override void _Ready()
     {
@@ -25,7 +25,7 @@ public partial class PipeSpawner : Node2D
 		NewPipe.Position=new Vector2(1300,RandomY);
 
 		Node2D NewPipe2=(Node2D)Pipe.Instantiate();
-		//ScoreArea.PipeCrossed += Label.AddPoints;
+
 		NewPipe2.RotationDegrees=180f;
 		NewPipe2.Position=new Vector2(1300,RandomY-130);
 		NewPipe2.Scale = new Vector2(-1, 1);
@@ -37,13 +37,14 @@ public partial class PipeSpawner : Node2D
 
 		if (script != null)
         {
-			script.PipeCrossed += Label.AddPoints;
+			script.PipeCrossed += ScoreManager.AddPoints;
 			
         }
 		if (pipeCollision!=null){
 			pipeCollision.ShowRestart += RestartContainer.ShowRestart;
 			pipeCollision2.ShowRestart += RestartContainer.ShowRestart;
 		}
+		
     }
 	
 }

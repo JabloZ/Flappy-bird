@@ -27,7 +27,7 @@ public partial class PipeSpawner : Node2D
 		Node2D NewPipe2=(Node2D)Pipe.Instantiate();
 		//ScoreArea.PipeCrossed += Label.AddPoints;
 		NewPipe2.RotationDegrees=180f;
-		NewPipe2.Position=new Vector2(1300,RandomY-120);
+		NewPipe2.Position=new Vector2(1300,RandomY-130);
 		NewPipe2.Scale = new Vector2(-1, 1);
 		PipeContainer.AddChild(NewPipe);
 		PipeContainer.AddChild(NewPipe2);

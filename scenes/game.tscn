@@ -53,7 +53,7 @@ texture = ExtResource("3_lnu2h")
 z_index = 2
 position = Vector2(251, 300)
 
-[node name="RestartContainer" type="VBoxContainer" parent="Control/CanvasLayer" unique_id=1172320197 node_paths=PackedStringArray("RestartButton")]
+[node name="RestartContainer" type="VBoxContainer" parent="Control/CanvasLayer" unique_id=1172320197 node_paths=PackedStringArray("RestartButton", "MenuButton")]
 process_mode = 3
 z_index = 4
 anchors_preset = 8
@@ -69,6 +69,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("6_kvpfn")
 RestartButton = NodePath("RestartButton")
+MenuButton = NodePath("MenuButton")
 
 [node name="Label" type="Label" parent="Control/CanvasLayer/RestartContainer" unique_id=522815194]
 layout_mode = 2
@@ -79,6 +80,11 @@ text = "Game over"
 layout_mode = 2
 theme_override_font_sizes/font_size = 60
 text = "Restart"
+
+[node name="MenuButton" type="Button" parent="Control/CanvasLayer/RestartContainer" unique_id=1259818254]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Quit"
 
 [node name="PipeContainer" type="Node2D" parent="Control/CanvasLayer" unique_id=372274081 node_paths=PackedStringArray("PipeContainer", "SpawnTimer", "Label", "RestartContainer")]
 script = ExtResource("5_p57ef")

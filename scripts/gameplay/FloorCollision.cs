@@ -4,7 +4,9 @@ using System;
 public partial class FloorCollision : Area2D
 {
     [Signal] public delegate void ShowRestartEventHandler();
+    [Signal] public delegate void SaveScoreEventHandler(int score);
     [Export] public AudioStreamPlayer2D HitSound;
+    [Export] public ScoreManager ScoreManager{get;set;}
 	public override void _Ready()
     {
         BodyEntered += OnBodyEntered;
@@ -13,7 +15,8 @@ public partial class FloorCollision : Area2D
     {
         HitSound.Play();
         EmitSignal(SignalName.ShowRestart);
-        
+        GD.Print("emituje sygnal");
+        EmitSignal(SignalName.SaveScore,ScoreManager.score);
 		GetTree().Paused = true;
         
     }

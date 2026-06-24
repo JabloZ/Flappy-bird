@@ -11,6 +11,7 @@ public partial class PipeSpawner : Node2D
 	[Export] public RestartContainer RestartContainer;
 	[Export] public ScoreManager ScoreManager;
 	
+	
 	public override void _Ready()
     {
         SpawnTimer.WaitTime=SpawnRate;
@@ -43,6 +44,8 @@ public partial class PipeSpawner : Node2D
 		if (pipeCollision!=null){
 			pipeCollision.ShowRestart += RestartContainer.ShowRestart;
 			pipeCollision2.ShowRestart += RestartContainer.ShowRestart;
+			pipeCollision.SaveScore += Score.Instance.SaveScore;
+			pipeCollision2.SaveScore += Score.Instance.SaveScore;
 		}
 		
     }

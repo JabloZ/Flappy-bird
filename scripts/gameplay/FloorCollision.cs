@@ -15,7 +15,7 @@ public partial class FloorCollision : Area2D
     {
         HitSound.Play();
         EmitSignal(SignalName.ShowRestart);
-        GD.Print("emituje sygnal");
+
         EmitSignal(SignalName.SaveScore,ScoreManager.score);
 		GetTree().Paused = true;
         

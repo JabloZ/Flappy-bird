@@ -35,9 +35,8 @@ texture = ExtResource("1_8x3ej")
 process_mode = 3
 stream = ExtResource("4_4ybk5")
 
-[node name="ScoreArea" type="Area2D" parent="." unique_id=900504969 node_paths=PackedStringArray("HitSound")]
+[node name="ScoreArea" type="Area2D" parent="." unique_id=900504969]
 script = ExtResource("3_8p0di")
-HitSound = NodePath("../PipeArea/HitSound")
 
 [node name="ScoreCollision" type="CollisionShape2D" parent="ScoreArea" unique_id=1856496396]
 position = Vector2(42, -157)

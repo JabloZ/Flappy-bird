@@ -15,6 +15,11 @@ run/main_scene="uid://cu4c5qkpyvx5v"
 config/features=PackedStringArray("4.6", "C#", "GL Compatibility")
 config/icon="uid://dfvuftuxxr46k"
 
+[autoload]
+
+Score="*uid://dxcgtxcnh025x"
+ScoreManager="*uid://8kovxhp4nr2w"
+
 [dotnet]
 
 project/assembly_name="flappy-bird"

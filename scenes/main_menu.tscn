@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bsy0a234p2roe" path="res://assets/tlo.png" id="1_l6cm7"]
 [ext_resource type="Script" uid="uid://dqxpi0ka1cdn3" path="res://scripts/gameplay/menu/Button.cs" id="2_ekxnf"]
 [ext_resource type="Script" uid="uid://c77abb20urn5f" path="res://scripts/gameplay/menu/ExitButton.cs" id="3_bqqt6"]
+[ext_resource type="Script" uid="uid://0cr2iofhyy2o" path="res://scripts/gameplay/menu/LeaderboardButton.cs" id="4_wu84c"]
 
 [node name="MainMenu" type="Node2D" unique_id=1332149333]
 
@@ -39,9 +40,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -200.0
-offset_top = -112.5
+offset_top = -305.83337
 offset_right = 200.0
-offset_bottom = 112.5
+offset_bottom = -80.833374
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 100
@@ -53,9 +54,9 @@ custom_minimum_size = Vector2(400, 225)
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.39583334
-anchor_top = 0.63811725
+anchor_top = 0.6782407
 anchor_right = 0.6041667
-anchor_bottom = 0.84645057
+anchor_bottom = 0.8865741
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 100
@@ -63,3 +64,21 @@ text = "Exit
 "
 script = ExtResource("3_bqqt6")
 metadata/_edit_use_anchors_ = true
+
+[node name="LeaderboardButton" type="Button" parent="CanvasLayer/Control/HBoxContainer/TextureRect" unique_id=1956029255]
+custom_minimum_size = Vector2(400, 225)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -57.5
+offset_right = 200.0
+offset_bottom = 167.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 60
+text = "Leaderboard"
+script = ExtResource("4_wu84c")

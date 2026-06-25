@@ -6,6 +6,8 @@ public partial class RestartContainer : VBoxContainer
 	// Called when the node enters the scene tree for the first time.
 	[Export] public Godot.Button RestartButton;
 	[Export] public Godot.Button MenuButton;
+	[Export] public Godot.Button LeaderboardButton;
+
 	public override void _Ready()
     {
 		Hide();	
@@ -23,6 +25,7 @@ public partial class RestartContainer : VBoxContainer
 		GetTree().ReloadCurrentScene();
 		this.Visible=false;
 	}
+	
 
 	public void ShowRestart()
     {

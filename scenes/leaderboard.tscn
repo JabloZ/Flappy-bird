@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://xv3lb32g3d0a"]
+
+[ext_resource type="Script" uid="uid://b25veesqhe8yq" path="res://scripts/gameplay/leaderboard/LeaderboardManager.cs" id="1_8lgqg"]
+[ext_resource type="Texture2D" uid="uid://bsy0a234p2roe" path="res://assets/tlo.png" id="1_mrg81"]
+[ext_resource type="Script" uid="uid://cf6v1c80m1ehl" path="res://scripts/gameplay/leaderboard/MenuButton.cs" id="2_wgq7h"]
+
+[node name="Leaderboard" type="Node2D" unique_id=844759314 node_paths=PackedStringArray("ScoreList")]
+script = ExtResource("1_8lgqg")
+ScoreList = NodePath("CanvasLayer/Control/HBoxContainer/TextureRect/MarginContainer/ScoreList")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1400692482]
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=1342263739]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control" unique_id=1243577749]
+layout_mode = 1
+offset_right = 1920.0
+offset_bottom = 1080.0
+scale = Vector2(0.6, 0.6)
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer" unique_id=235697867]
+layout_mode = 2
+texture = ExtResource("1_mrg81")
+
+[node name="Button" type="Button" parent="CanvasLayer/Control/HBoxContainer/TextureRect" unique_id=659862035]
+custom_minimum_size = Vector2(200, 125)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.39583334
+anchor_top = 0.8503086
+anchor_right = 0.6041667
+anchor_bottom = 0.97916687
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 70
+text = "Menu"
+script = ExtResource("2_wgq7h")
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/HBoxContainer/TextureRect" unique_id=2036059952]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 895.0
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 0
+
+[node name="ScoreList" type="VBoxContainer" parent="CanvasLayer/Control/HBoxContainer/TextureRect/MarginContainer" unique_id=1280253643]
+layout_mode = 2

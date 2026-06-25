@@ -3,7 +3,7 @@ using System;
 
 public partial class ScoreManager: Node2D
 {
-
+    public static ScoreManager Instance { get; private set; }
 	// Called when the node enters the scene tree for the first time.
 	[Export] public AudioStreamPlayer2D AdvanceSound;
 	[Export] public AudioStreamPlayer2D Advance10Sound;
@@ -11,6 +11,7 @@ public partial class ScoreManager: Node2D
 	public int score;
 	public override void _Ready()
     {
+        Instance=this;
         score=0;
     }
 	public void AddPoints()

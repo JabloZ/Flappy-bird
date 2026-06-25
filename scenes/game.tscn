@@ -12,15 +12,17 @@
 [ext_resource type="Script" uid="uid://8kovxhp4nr2w" path="res://scripts/gameplay/ScoreManager.cs" id="9_0tnpc"]
 [ext_resource type="AudioStream" uid="uid://b1gg0k5koxv38" path="res://assets/sounds/level.wav" id="10_kvpfn"]
 [ext_resource type="AudioStream" uid="uid://bx410s1t6dwev" path="res://assets/sounds/level10.wav" id="11_dinhu"]
+[ext_resource type="Script" uid="uid://dxcgtxcnh025x" path="res://scripts/gameplay/database/Score.cs" id="13_kvuet"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lbhrr"]
 size = Vector2(1152, 39)
 
-[node name="Game" type="Node2D" unique_id=222376207 node_paths=PackedStringArray("FloorCollision", "RoofCollision", "RestartContainer")]
+[node name="Game" type="Node2D" unique_id=222376207 node_paths=PackedStringArray("FloorCollision", "RoofCollision", "RestartContainer", "Score")]
 script = ExtResource("1_vtaks")
 FloorCollision = NodePath("Control/CanvasLayer/Floor")
 RoofCollision = NodePath("Control/CanvasLayer/Roof")
 RestartContainer = NodePath("Control/CanvasLayer/RestartContainer")
+Score = NodePath("Control/CanvasLayer/Score")
 
 [node name="Control" type="Control" parent="." unique_id=202401166]
 layout_mode = 3
@@ -34,10 +36,11 @@ offset_bottom = 1080.0
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("1_uwrxv")
 
-[node name="Floor" type="Area2D" parent="Control/CanvasLayer" unique_id=574462039 node_paths=PackedStringArray("HitSound")]
+[node name="Floor" type="Area2D" parent="Control/CanvasLayer" unique_id=574462039 node_paths=PackedStringArray("HitSound", "ScoreManager")]
 position = Vector2(0, 648)
 script = ExtResource("3_lbhrr")
 HitSound = NodePath("HitSound")
+ScoreManager = NodePath("../ScoreManager")
 
 [node name="FloorCollision" type="CollisionShape2D" parent="Control/CanvasLayer/Floor" unique_id=1832281457]
 position = Vector2(576, -19.5)
@@ -58,10 +61,11 @@ texture = ExtResource("3_lnu2h")
 process_mode = 3
 stream = ExtResource("5_dinhu")
 
-[node name="Roof" type="Area2D" parent="Control/CanvasLayer" unique_id=1348631733 node_paths=PackedStringArray("HitSound")]
+[node name="Roof" type="Area2D" parent="Control/CanvasLayer" unique_id=1348631733 node_paths=PackedStringArray("HitSound", "ScoreManager")]
 position = Vector2(0, 648)
 script = ExtResource("3_lbhrr")
 HitSound = NodePath("HitSound")
+ScoreManager = NodePath("../ScoreManager")
 
 [node name="FloorCollision" type="CollisionShape2D" parent="Control/CanvasLayer/Roof" unique_id=2088170428]
 position = Vector2(576, -668)
@@ -145,3 +149,6 @@ grow_horizontal = 2
 size_flags_horizontal = 0
 theme_override_font_sizes/font_size = 60
 text = "0"
+
+[node name="Score" type="Node2D" parent="Control/CanvasLayer" unique_id=1294698527]
+script = ExtResource("13_kvuet")

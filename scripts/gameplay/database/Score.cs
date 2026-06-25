@@ -12,6 +12,7 @@ public partial class Score : Node
         using var db = new GameDb();
         db.Database.EnsureCreated();
         GD.Print("DB setup");
+        TrimScores(15);
     }
     public void SaveScore(int score)
     {
@@ -52,6 +53,34 @@ public partial class Score : Node
         foreach(var entry in TopScores)
         {
             GD.Print($"Wynik: {entry.Value} Kiedy: {entry.ScoreDate}");
+        }
+    }
+    public void TrimScores(int keep)
+    {
+        try
+        {
+            using var db=new GameDb();
+            var ToKeep=db.Scores
+                .OrderByDescending(s=>s.Value)
+                .Take(keep)
+                .Select(s=>s.Id)
+                .ToList();
+
+            var ToRemove=db.Scores
+            .Where(s=>!ToKeep.Contains(s.Id))
+            .ToList();
+
+            if (ToRemove.Count > 0)
+            {
+                db.Scores.RemoveRange(ToRemove);
+                db.SaveChanges();
+                GD.Print("Usunieto nadmiar");
+            }
+        }
+
+        catch(Exception ex)
+        {
+            GD.Print($"blad: {ex.Message}");
         }
     }
     

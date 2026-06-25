@@ -1,13 +1,21 @@
 using Microsoft.EntityFrameworkCore;
 using Godot;
 
-public class GameDb: DbContext
+public class GameDb : DbContext
 {
-    public DbSet<ScoreEntry> Scores{get;set;}
+    private readonly string _dbPath;
+    public GameDb()
+    {
+        _dbPath = System.IO.Path.Combine(OS.GetUserDataDir(), "game.db");
+    }
+    public GameDb(string dbPath) // do testow
+    {
+        _dbPath = dbPath;
+    }
+
+    public DbSet<ScoreEntry> Scores { get; set; }
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        //zapisujemy do user:// bo res:// moze nie dzialac
-        string dbPath=System.IO.Path.Combine(OS.GetUserDataDir(),"game.db");
-        optionsBuilder.UseSqlite($"Data Source={dbPath}");
+        optionsBuilder.UseSqlite($"Data Source={_dbPath}");
     }
 }

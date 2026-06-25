@@ -4,8 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://bsy0a234p2roe" path="res://assets/tlo.png" id="1_mrg81"]
 [ext_resource type="Script" uid="uid://cf6v1c80m1ehl" path="res://scripts/gameplay/leaderboard/MenuButton.cs" id="2_wgq7h"]
 
-[node name="Leaderboard" type="Node2D" unique_id=844759314]
+[node name="Leaderboard" type="Node2D" unique_id=844759314 node_paths=PackedStringArray("ScoreList")]
 script = ExtResource("1_8lgqg")
+ScoreList = NodePath("CanvasLayer/Control/HBoxContainer/TextureRect/MarginContainer/ScoreList")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1400692482]
 
@@ -55,5 +56,5 @@ theme_override_constants/margin_top = 100
 theme_override_constants/margin_right = 100
 theme_override_constants/margin_bottom = 0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/HBoxContainer/TextureRect/MarginContainer" unique_id=537896308]
+[node name="ScoreList" type="VBoxContainer" parent="CanvasLayer/Control/HBoxContainer/TextureRect/MarginContainer" unique_id=1280253643]
 layout_mode = 2

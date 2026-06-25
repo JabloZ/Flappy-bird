@@ -1,6 +1,0 @@
-/media/jabloz/dysk1/GamesDev/flappy-bird/GameTests/obj/Debug/net10.0/GameTests.csproj.AssemblyReference.cache
-/media/jabloz/dysk1/GamesDev/flappy-bird/GameTests/obj/Debug/net10.0/GameTests.GeneratedMSBuildEditorConfig.editorconfig
-/media/jabloz/dysk1/GamesDev/flappy-bird/GameTests/obj/Debug/net10.0/GameTests.AssemblyInfoInputs.cache
-/media/jabloz/dysk1/GamesDev/flappy-bird/GameTests/obj/Debug/net10.0/GameTests.AssemblyInfo.cs
-/media/jabloz/dysk1/GamesDev/flappy-bird/GameTests/obj/Debug/net10.0/GameTests.csproj.CoreCompileInputs.cache
-/media/jabloz/dysk1/GamesDev/flappy-bird/GameTests/obj/Debug/net10.0/GameTests.sourcelink.json

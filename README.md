@@ -5,7 +5,7 @@ Ten projekt jest klonem gry video flappy bird. Został on stworzony w ramach pro
 Do stworzenia gry użyłem Godota C# w wersji 4.6.2. Jako framework do testów wybrałem Xunit. Jak wyżej wspomniałem, Używałem też gimpa i 8bit sound makera. No i oczywiście git jako system kontroli wersji.
 
 ## RELEASE
-W razie gdyby linki nie działały to proszę dać znać. W linkach można grę (jest gotowa do uruchomienia, nie trzeba mieć godota u siebie na komputerze)
+W razie gdyby linki nie działały to proszę dać znać. W linkach można pobrać grę (jest gotowa do uruchomienia, nie trzeba mieć godota u siebie na komputerze)
 
 - Windows: [Gra na Windows](https://www.mediafire.com/file/h1d49tj2089uecm/gra.zip) - nietestowane, nie mam maszyny z Windowsem.
 - Linux: [Gra na Linux](https://www.mediafire.com/file/331q98n86rx5h8n/gralin.zip/file) - testowane, działa
